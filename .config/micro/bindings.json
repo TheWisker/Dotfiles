@@ -1,0 +1,10 @@
+{
+    "F1": "command:fzf",
+    "F3": "command:tree",
+    "F4": "command:jumptag",
+    "F5": "lua:wc.wordCount",
+	"F2": "command:nextBookmark",
+    "Shift-F2": "command:prevBookmark",
+    "Ctrl-F2": "command:toggleBookmark",
+    "CtrlShift-F2": "command:clearBookmarks"
+}

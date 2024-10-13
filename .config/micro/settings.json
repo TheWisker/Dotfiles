@@ -1,0 +1,15 @@
+
+{
+    "autosu": true,
+    "hlsearch": true,
+    "saveundo": true,
+    "mkparents": true,
+	"detectlimit": 150,
+    "diffgutter": true,
+    "savecursor": true,
+    "parsecursor": true,
+    "hltrailingws": true,
+    "rmtrailingws": true,
+    "colorscheme": "dracula-tc",
+    "matchbracestyle": "highlight"
+}

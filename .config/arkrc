@@ -1,0 +1,10 @@
+[General]
+LockSidebar=true
+ShowSidebar=true
+defaultOpenAction=Open
+
+[MainWindow]
+StatusBar=Disabled
+
+[Viewer]
+ToolBarsMovable=Disabled

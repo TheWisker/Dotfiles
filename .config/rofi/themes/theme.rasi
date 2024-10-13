@@ -1,0 +1,347 @@
+/* <=====================================> *
+ *       ██████╗  ██████╗ ███████╗██╗      *
+ *       ██╔══██╗██╔═══██╗██╔════╝██║      *
+ *       ██████╔╝██║   ██║█████╗  ██║      *
+ *       ██╔══██╗██║   ██║██╔══╝  ██║      *
+ *       ██║  ██║╚██████╔╝██║     ██║      *
+ *       ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝      *
+ * <=====================================> *
+ *            @author: TheWisker           *
+ *             @version: 1.7.5             *
+ *          @docs: man rofi-theme(5)       *
+ *  https://github.com/TheWisker/Dotfiles  *
+ * <=====================================> */
+
+/* The current theme layout is structured as follows:
+ *
+ • (#ms) is the mode-switcher.
+ • (#ci) is the case-indicator.
+ • (#fr) is the num-filtered-rows.
+
+ ┌────────────────────────────────────────────────────────────────────────────────────┐
+ │ window {BOX:vertical}                                                              │
+ │ ┌───────────────────────────────────────────────────────────────────────────────┐  │
+ │ │ mainbox  {BOX:vertical}                                                       │  │
+ │ │ ┌───────────────────────────────────────────────────────────────────────────┐ │  │
+ │ │ │ inputbar {BOX:horizontal}                                                 │ │  │
+ │ │ │ ┌─────────┐ ┌─┐ ┌───────────────────────────────┐ ┌───┐ ┌───┐ ┌─────────┐ │ │  │
+ │ │ │ │ prompt  │ │:│ │ entry                         │ │#ci│ │#fr│ │   #ms   │ │ │  │
+ │ │ │ └─────────┘ └─┘ └───────────────────────────────┘ └───┘ └───┘ └─────────┘ │ │  │
+ │ │ └───────────────────────────────────────────────────────────────────────────┘ │  │
+ │ │                                                                               │  │
+ │ │ ┌───────────────────────────────────────────────────────────────────────────┐ │  │
+ │ │ │ message                                                                   │ │  │
+ │ │ │ ┌───────────────────────────────────────────────────────────────────────┐ │ │  │
+ │ │ │ │ textbox                                                               │ │ │  │
+ │ │ │ └───────────────────────────────────────────────────────────────────────┘ │ │  │
+ │ │ └───────────────────────────────────────────────────────────────────────────┘ │  │
+ │ │                                                                               │  │
+ │ │ ┌───────────────────────────────────────────────────────────────────────────┐ │  │
+ │ │ │ listview                                                                  │ │  │
+ │ │ │ ┌─────────────────────────────────────────────────────────────────────┐   │ │  │
+ │ │ │ │ element                                                             │   │ │  │
+ │ │ │ │ ┌─────────────────┐ ┌─────────────────────────────────────────────┐ │   │ │  │
+ │ │ │ │ │ element─icon    │ │ element─text                                │ │   │ │  │
+ │ │ │ │ └─────────────────┘ └─────────────────────────────────────────────┘ │   │ │  │
+ │ │ │ └─────────────────────────────────────────────────────────────────────┘   │ │  │
+ │ │ └───────────────────────────────────────────────────────────────────────────┘ │  │
+ │ │                                                                               │  │
+ │ └───────────────────────────────────────────────────────────────────────────────┘  │
+ └────────────────────────────────────────────────────────────────────────────────────┘
+
+ ┌──────────────────────────────────────────────────────────────────────────────┐
+ │ ...                                                                          │
+ │ ┌──────────────────────────────────────────────────────────────────────────┐ │
+ │ │  mode─switcher {BOX:horizontal}                                          │ │
+ │ │ ┌───────────────┐  ┌───────────────┐  ┌──────────────┐ ┌───────────────┐ │ │
+ │ │ │ button        │  │ button        │  │ button       │ │ button        │ │ │
+ │ │ └───────────────┘  └───────────────┘  └──────────────┘ └───────────────┘ │ │
+ │ └──────────────────────────────────────────────────────────────────────────┘ │
+ │                                                                              │
+ └──────────────────────────────────────────────────────────────────────────────┘
+
+ ┌──────────────────────────────────────────────────────────────────────────────┐
+ │ window {BOX:vertical}                                                        │
+ │ ┌─────────────────────────────────────────────────────────────────────────┐  │
+ │ │ error─message {BOX:vertical}                                            │  │
+ │ │ ┌────────────────────────────────────────────────────────────────────┐  │  │
+ │ │ │ textbox                                                            │  │  │
+ │ │ └────────────────────────────────────────────────────────────────────┘  │  │
+ │ └─────────────────────────────────────────────────────────────────────────┘  │
+ │                                                                              │
+ └──────────────────────────────────────────────────────────────────────────────┘ */
+
+/* <=======================================================================================================>  *
+ *   Imported Properties:                                                                                     *
+ * <=======================================================================================================>  */
+    @import "../fonts/aesthetic.rasi"
+    @import "../colors/pywall.rasi"
+/* <=======================================================================================================>  */
+* {
+/* <=======================================================================================================>  *
+ *   Global Properties:                                                                                       *
+ * <=======================================================================================================>  */
+    margin: 0;
+    padding: 0;
+    spacing: 0;
+    enabled: true;
+    border-radius: 0;
+    cursor: "default";
+    border: 0px solid;
+    border-color: transparent;
+    background-color: transparent;
+
+    alt-bg: #272A2B;
+    fg: var(foreground, #FFFFFF);
+    bg: var(background, #1E2127);
+    active: var(color3, #98C379);
+    urgent: var(color2, #E06C75);
+    selected: var(color1, #61AFEF);
+
+    su-gradient: var(selected-urgent, linear-gradient(45, #61AFEF, #E06C75));
+    sa-gradient: var(selected-active, linear-gradient(45, #61AFEF, #98C379));
+/* <=======================================================================================================>  */
+}
+
+/* <=======================================================================================================>  *
+ *   Widget Properties:                                                                                       *
+ * <=======================================================================================================>  */
+
+/* Path: window */
+window {
+    x-offset: 0;
+    y-offset: 0;
+    width: 650px;
+    anchor: center;
+    location: center;
+    fullscreen: false;
+    border-radius: 30px;
+    transparency: "real";
+    background-color: var(bg);
+    children: ["mainbox"];
+}
+
+/* Path: window > mainbox */
+mainbox {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    orientation: vertical;
+    background-color: var(alt-bg);
+    children: ["inputbar", "message", "listview"];
+}
+
+
+/* Path: window > mainbox > inputbar */
+inputbar {
+    margin: 0 0 10px 0;
+    text-color: var(fg);
+    children: [/*"prompt",*/ "textbox-prompt", "entry", "case-indicator", "num-filtered-rows", /*"num-rows",*/ "mode-switcher"];
+}
+
+/* Path: window > mainbox > inputbar > prompt */
+prompt {
+    enabled: false;
+}
+
+/* Path: window > mainbox > inputbar > textbox-prompt */
+textbox-prompt {
+    content: ""; /* uses Material Icons font */
+    expand: false;
+    text-color: inherit;
+    vertical-align: 0.5;
+    font: var(icon-font);
+    text-transform: bold;
+    padding: 5px 12px 5px 13px;
+}
+
+/* Path: window > mainbox > inputbar > entry */
+entry {
+    blink: true;
+    cursor: text;
+    expand: true;
+    padding: 5px 0px;
+    text-color: inherit;
+    vertical-align: 0.5;
+    placeholder: "Search...";
+    placeholder-color: var(fg);
+}
+
+/* Path: window > mainbox > inputbar > case-indicator */
+case-indicator {
+    text-color: inherit;
+    vertical-align: 0.5;
+    text-transform: bold;
+    padding: 5px 0 5px 10px;
+}
+
+/* Path: window > mainbox > inputbar > num-filtered-rows */
+num-filtered-rows {
+    text-color: inherit;
+    vertical-align: 0.5;
+    text-transform: bold;
+    padding: 5px 10px 5px 0;
+}
+
+/* Path: window > mainbox > inputbar > num-rows */
+num-rows {
+    enabled: false;
+}
+
+/* Path: window > mainbox > inputbar > mode-switcher */
+mode-switcher {
+    spacing: 10px;
+    orientation: horizontal;
+    text-color: var(fg);
+}
+
+/* Path: window > mainbox > inputbar > mode-switcher > button */
+button {
+    cursor: pointer;
+    padding: 5px 8px;
+    text-color: inherit;
+    border-radius: 100%;
+    vertical-align: 0.5;
+    font: var(icon-font);
+    background-color: var(alt-bg);
+}
+
+/* Path: window > mainbox > inputbar > mode-switcher > button.selected */
+button.selected {
+    text-color: var(fg);
+    background-color: var(selected);
+}
+
+/* Path: window > mainbox > listview */
+listview {
+    lines: 10;
+    columns: 1;
+    cycle: true;
+    spacing: 6px;
+    dynamic: true;
+    reverse: false;
+    scrollbar: true;
+    flow: horizontal;
+    layout: vertical;
+    fixed-height: true;
+    text-color: var(fg);
+    fixed-columns: true;
+    vertical-align: 0.5;
+    require-input: false;
+    /*scrollbar-width: 10px;*/
+}
+
+/* Path: window > mainbox > listview > scrollbar */
+scrollbar {
+    handle-width: 6px;
+    margin: 0 0 0 15px;
+    border-radius: 100%;
+    handle-color: var(selected);
+    background-color: var(bg);
+}
+
+/* Path: window > mainbox > listview > scrollbar.handle */
+scrollbar.hadle {
+    border-radius: inherit;
+}
+
+/* Path: window > mainbox > listview > element */
+element {
+    padding: 6px;
+    spacing: 10px;
+    cursor: pointer;
+    text-color: inherit;
+    border-radius: 100%;
+}
+
+element.normal.normal {
+    text-color: var(fg);
+    background-color: var(bg);
+}
+
+element.normal.urgent {
+    text-color: var(fg);
+    background-color: var(urgent);
+}
+
+element.normal.active {
+    text-color: var(fg);
+    background-color: var(active);
+}
+
+element.alternate.normal {
+    text-color: var(fg);
+    background-color: var(bg);
+}
+
+element.alternate.urgent {
+    text-color: var(fg);
+    background-color: var(urgent);
+
+}
+
+element.alternate.active {
+    text-color: var(fg);
+    background-color: var(active);
+}
+
+element.selected.normal {
+    text-color: var(fg);
+    background-color: var(selected);
+}
+
+element.selected.urgent {
+    text-color: var(fg);
+    background-image: var(su-gradient);
+}
+
+element.selected.active {
+    text-color: var(fg);
+    background-image: var(sa-gradient);
+}
+
+/* Path: window > mainbox > listview > element > element-icon */
+element-icon {
+    size: 20px;
+    squared: true;
+    padding: 8px;
+    cursor: inherit;
+    vertical-align: 0.5;
+    text-color: inherit;
+    border-radius: 100%;
+    font: var(icon-font);
+    background-color: var(alt-bg);
+}
+
+/* Path: window > mainbox > listview > element > element-text */
+element-text {
+    cursor: inherit;
+    highlight: none;
+    text-color: inherit;
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+}
+
+/* Path: window > mainbox > message */
+message {
+    text-color: var(fg);
+}
+
+/* Path: window > error-message */
+error-message {
+    padding: 12px;
+    border-radius: 20px;
+    text-color: var(fg);
+    background-color: var(bg);
+}
+
+/* Path: window > ((mainbox > message) || error-message) > textbox */
+textbox {
+    padding: 12px 13px;
+    text-color: inherit;
+    border-radius: 12px;
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+    background-color: var(alt-bg);
+}
+/* <=======================================================================================================>  */

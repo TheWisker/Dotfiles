@@ -1,0 +1,558 @@
+# <==============================================================>
+
+#   ███████╗████████╗ █████╗ ██████╗ ███████╗██╗  ██╗██╗██████╗ 
+#   ██╔════╝╚══██╔══╝██╔══██╗██╔══██╗██╔════╝██║  ██║██║██╔══██╗
+#   ███████╗   ██║   ███████║██████╔╝███████╗███████║██║██████╔╝
+#   ╚════██║   ██║   ██╔══██║██╔══██╗╚════██║██╔══██║██║██╔═══╝ 
+#   ███████║   ██║   ██║  ██║██║  ██║███████║██║  ██║██║██║     
+#   ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝╚═╝     
+                                                            
+# <==============================================================>
+#                       @Author: TheWisker
+# <==============================================================>
+#                  Starship prompt configuration
+# <==============================================================>
+#  Prompt wide:
+# <==============================================================>
+format = """
+$username\
+$hostname\
+$singularity\
+$kubernetes\
+$directory\
+$vcsh\
+$git_branch\
+$git_state\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$gleam\
+$golang\
+$guix_shell\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$quarto\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$typst\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$meson\
+$spack\
+$openstack\
+$nats\
+$crystal\
+$container\
+$sudo\
+$battery\
+$cmd_duration\
+$jobs\
+$line_break\
+$character"""
+scan_timeout = 25
+add_newline = true
+command_timeout = 350
+right_format = "$time"
+follow_symlinks = true
+# <==============================================================>
+#                            First row
+# <==============================================================>
+#  First param:
+# <==============================================================>
+[username]
+show_always = true
+style_root = "bold red"
+style_user = "bold purple"
+format = " [╭─$user]($style)"
+# <==============================================================>
+#  Second param:
+# <==============================================================>
+[hostname]
+trim_at = ""
+ssh_only = false
+style = "bold dimmed blue"
+format = "@[$hostname]($style)([ $ssh_symbol]($style))"
+# <==============================================================>
+#  Third param:
+# <==============================================================>
+[directory]
+read_only = "r."
+home_symbol = "~"
+style = "bold yellow"
+truncation_length = 0
+use_os_path_sep = true
+truncate_to_repo = true
+repo_root_style = "bold yellow"
+read_only_style = "bold dimmed yellow"
+format = " in [$read_only]($read_only_style)[$path]($style)"
+repo_root_format = " in [repo:]($repo_root_style) ([$read_only](bold dimmed yellow))[$repo_root]($repo_root_style)[$path](bold dimmed yellow)"
+# <==============================================================>
+[directory.substitutions]
+'/mnt/media/' = '//:'
+# <==============================================================>
+#  Fourth param:
+# <==============================================================>
+#  Version Control Context
+# <==============================================================>
+[git_branch]
+symbol = ""
+style = "bold yellow"
+format = " on [$symbol $branch(:$remote_branch)]($style)"
+# <==============================================================>
+[git_state]
+style = "bold yellow"
+format = '( \([$state( $progress_current/$progress_total)]($style)\))'
+# <==============================================================>
+[git_status]
+ahead = "${count}⇡"
+behind = "${count}⇣"
+staged = "${count}👍"
+style = "bold yellow"
+stashed = "${count}📦"
+renamed = "${count}👅"
+deleted = "${count}🗑️"
+modified = "${count}📝"
+untracked = "${count}🔍"
+conflicted = "${count}⚔️"
+up_to_date = "${count}✔️"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+format = "( with [$conflicted$stashed$deleted$renamed$modified$staged$untracked$ahead_behind]($style))"
+# <==============================================================>
+[vcsh]
+symbol = ''
+style = "bold yellow"
+format = " vcsh [$symbol$repo]($style)"
+# <==============================================================>
+#  Fifth param:
+# <==============================================================>
+[sudo]
+symbol = "root"
+disabled = false # true by default
+style = "bold blink bright-red"
+format = " as [$symbol]($style)"
+# <==============================================================>
+#  Sixth param:
+# <==============================================================>
+[battery]
+full_symbol = ""
+empty_symbol = "󰂎"
+charging_symbol = ""
+discharging_symbol = ""
+format = "( [$symbol$percentage]($style))"
+# <==============================================================>
+[[battery.display]]
+threshold = 25
+style = "bold red"
+# <==============================================================>
+[[battery.display]]
+threshold = 50
+style = "bold yellow"
+# <==============================================================>
+#  Seventh param:
+# <==============================================================>
+[cmd_duration]
+min_time = 1
+style = "bold cyan"
+show_milliseconds = true
+format = " took [$duration]($style)"
+# <==============================================================>
+#  Eighth param:
+# <==============================================================>
+[jobs]
+symbol = "+"
+style = "bold red"
+symbol_threshold = 1
+number_threshold = 2
+format = " [$symbol$number]($style)"
+# <==============================================================>
+#                           Second row
+# <==============================================================>
+#  First param:
+# <==============================================================>
+[character]
+format = "$symbol "
+error_symbol = " [╰─✘](bold red)"
+success_symbol = " [╰─λ](bold purple)"
+# <==============================================================>
+#  Contextual Information:
+# <==============================================================>
+[aws]
+disabled = true
+# <==============================================================>
+[buf]
+symbol = '🐃'
+style = "bold blue"
+version_format = "v${raw}"
+format = " with [$symbol($version)]($style)"
+# <==============================================================>
+[bun]
+symbol = '🥟'
+style = "bold blue"
+version_format = "v${raw}"
+format = " with [$symbol($version(-$name))]($style)"
+# <==============================================================>
+[c]
+symbol = 'C'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[cmake]
+symbol = '△'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[cobol]
+symbol = '⚙️'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[conda]
+symbol = '🅒'
+style = "bold blue"
+format = " via [$symbol$environment)]($style)"
+# <==============================================================>
+[container]
+symbol = '⬢'
+style = "bold blue"
+format = ' on [$symbol\[$name\]]($style)'
+# <==============================================================>
+[crystal]
+symbol = '🔮'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[daml]
+symbol = 'Λ'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[dart]
+symbol = '🎯'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[deno]
+symbol = '🦕'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[docker_context]
+symbol = '🐳'
+style = "bold blue"
+format = " via [$symbol$context]($style)"
+# <==============================================================>
+[dotnet]
+symbol = '.NET'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)( 🎯$tfm)]($style)"
+# <==============================================================>
+[elixir]
+symbol = '💧'
+style = "bold blue"
+version_format = "v${raw}"
+format = ' via [$symbol($version \(OTP $otp_version\))]($style)'
+# <==============================================================>
+[elm]
+symbol = '🌳'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[erlang]
+symbol = ''
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[fennel]
+symbol = '🧅'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[gcloud]
+disabled = true
+# <==============================================================>
+[gleam]
+symbol = '⭐'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[golang]
+symbol = '🐹'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[guix_shell]
+symbol = 'Gx'
+style = "bold blue"
+format = " via [$symbol]($style)"
+# <==============================================================>
+[gradle]
+symbol = '🅶'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[haskell]
+symbol = 'λ'
+style = "bold blue"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[haxe]
+symbol = '⌘'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[helm]
+symbol = '⎈'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[java]
+symbol = '☕'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[julia]
+symbol = 'ஃ'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[kotlin]
+symbol = '🅺'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[lua]
+symbol = '🌙'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[meson]
+symbol = '⬢'
+style = "bold blue"
+format = " via [$symbol$project($style)"
+# <==============================================================>
+[nats]
+symbol = '✉️'
+style = "bold blue"
+format = " on [$symbol$name]($style)"
+# <==============================================================>
+[nim]
+symbol = '👑'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol( $version)]($style)"
+# <==============================================================>
+[nix_shell]
+symbol = '❄️'
+style = "bold blue"
+format = ' via [$symbol$state( \($name\))]($style)'
+# <==============================================================>
+[nodejs]
+symbol = ''
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[ocaml]
+symbol = '🐫'
+style = "bold blue"
+version_format = "v${raw}"
+format = ' via [$symbol($version)( \($switch_indicator$switch_name\))]($style)'
+# <==============================================================>
+[odin]
+symbol = 'Ø'
+style = "bold blue"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[opa]
+symbol = '🪖'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[openstack]
+symbol = '☁️'
+style = "bold blue"
+format = ' on [$symbol$cloud(\($project\))]($style)'
+# <==============================================================>
+[package]
+symbol = '📦'
+style = "bold blue"
+version_format = "v${raw}"
+format = " is [$symbol$version]($style)"
+# <==============================================================>
+[perl]
+symbol = '⚪'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[php]
+symbol = '🐘'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[purescript]
+symbol = '<=>'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[python]
+symbol = '🐍'
+style = "bold blue"
+version_format = "v${raw}"
+format = ' via [$symbol$pyenv_prefix($version)( \($virtualenv\))]($style)'
+# <==============================================================>
+[quarto]
+symbol = '⨁'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[rlang]
+symbol = 'R'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[raku]
+symbol = '🦋'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version(-$vm_version))]($style)"
+# <==============================================================>
+[red]
+symbol = '🔺'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[ruby]
+symbol = ''
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[rust]
+symbol = '🦀'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[scala]
+symbol = '🆂'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[singularity]
+symbol = 'Sng'
+style = "bold blue"
+format = ' on [$symbol\[$env\]]($style)'
+# <==============================================================>
+[solidity]
+symbol = 'S'
+style = "bold blue"
+version_format = "v${major}.${minor}.${patch}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[spack]
+symbol = '🅢'
+style = "bold blue"
+format = " via [$symbol$environment]($style)"
+# <==============================================================>
+[swift]
+symbol = '🐦'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[terraform]
+symbol = '💠'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol$workspace]($style)"
+# <==============================================================>
+[typst]
+symbol = 't'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[vagrant]
+symbol = '⍱'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[vlang]
+symbol = 'V'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>
+[zig]
+symbol = '↯'
+style = "bold blue"
+version_format = "v${raw}"
+format = " via [$symbol($version)]($style)"
+# <==============================================================>

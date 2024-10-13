@@ -1,0 +1,16 @@
+[Core General]
+ExternalEditor=Custom
+ExternalEditorCommand=micro %f:%l:%c
+
+[Core Performance]
+MemoryLevel=Aggressive
+
+[Core Presentation]
+SlidesTapNavigation=ForwardBackward
+
+[General]
+ShellOpenFileInTabs=true
+
+[PageView]
+ShowScrollBars=false
+ViewColumns=2

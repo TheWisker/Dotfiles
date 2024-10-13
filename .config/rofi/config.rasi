@@ -1,0 +1,272 @@
+/* <=====================================> *
+ *       ██████╗  ██████╗ ███████╗██╗      *
+ *       ██╔══██╗██╔═══██╗██╔════╝██║      *
+ *       ██████╔╝██║   ██║█████╗  ██║      *
+ *       ██╔══██╗██║   ██║██╔══╝  ██║      *
+ *       ██║  ██║╚██████╔╝██║     ██║      *
+ *       ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝      *
+ * <=====================================> *
+ *            @author: TheWisker           *
+ *             @version: 1.7.5             *
+ *            @docs: man rofi(1)           *
+ *  https://github.com/TheWisker/Dotfiles  *
+ * <=====================================> */
+configuration {
+/* <=======================================================================================================>  *
+ *   Modes:                                                                                                   *
+ * <=======================================================================================================>  */
+    modes: "drun,window,filebrowser,run"; //ssh
+/* <=======================================================================================================>  *
+ *   Desktop Run Mode:                                                                                        *
+ * <=======================================================================================================>  */
+    drun-categories: ""; /* show only some categories */
+    drun-show-actions: false; /* show desktop file actions */
+    drun-use-desktop-cache: true; /* -drun-reload-desktop-cache */
+    drun-url-launcher: "xdg-open"; //LOOK OUT
+    drun-match-fields: "name,generic,exec,categories,keywords"; /* comment */
+    drun-display-format: "<b>{name}</b> [<span weight='light' size='small'><i>({generic})</i></span>]"; /* only drun-match-fields fields */
+
+    drun {
+        parse-user: true;
+        display-name: ""; /* uses Material Icons font */
+        parse-system: true;
+        fallback-icon: "application-x-addon";
+    }
+/* <=======================================================================================================>  *
+ *   Window Mode:                                                                                             *
+ * <=======================================================================================================>  */
+    window-thumbnail: false;
+    window-format: "<b>{w}</b> · <b>{c}</b> · <i>{t:0}</i>"; /* (:0) -> :length -> 0 auto-size */
+    window-command: "wmctrl -i -R {window}"; /* action on kb-accept-alt */
+    window-match-fields: "title,class,name,role,desktop";
+
+    window, windowcd {
+        display-name: ""; /* uses Material Icons font */
+        close-on-delete: false;
+        hide-active-window: true;
+        fallback-icon: "application-x-addon";
+    }
+/* <=======================================================================================================>  *
+ *   Filebrowser Mode:                                                                                        *
+ * <=======================================================================================================>  */
+    filebrowser {
+        directory: "~";
+        display-name: ""; /* uses Material Icons font */
+        sorting-method: "name"; /* name, mtime, atime, ctime */
+        directories-first: true;
+        fallback-icon: "application-x-addon";
+    }
+/* <=======================================================================================================>  *
+ *   Run Mode:                                                                                                *
+ * <=======================================================================================================>  */
+    run-command: "{cmd}"; /* drun */
+    run-list-command: ""; /* command to get list of commands */
+    run-shell-command: "{terminal} -e {cmd}"; /* run */
+
+    run {
+        display-name: ""; /* uses Material Icons font */
+        fallback-icon: "application-x-addon";
+    }
+/* <=======================================================================================================>  *
+ *   Secure SHell Mode:                                                                                       *
+ * <=======================================================================================================>  */
+    parse-hosts: true; /* /etc/hosts */
+    ssh-client: "ssh";
+    parse-known-hosts: true; /* ~/.ssh/known_hosts */
+    ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";
+
+    ssh {
+        display-name: ""; /* uses Material Icons font */
+        fallback-icon: "application-x-addon";
+    }
+/* <=======================================================================================================>  *
+ *   Combination Mode:                                                                                        *
+ * <=======================================================================================================>  */
+    combi-modes: "drun,window";
+    combi-hide-mode-prefix: false;
+    combi-display-format: "[{mode}] {text}";
+
+    combi {
+        display-name: ""; /* uses Material Icons font */
+        fallback-icon: "application-x-addon";
+    }
+/* <=======================================================================================================>  *
+ *   Icons:                                                                                                   *
+ * <=======================================================================================================>  */
+    show-icons: true;
+    icon-theme: "Amy";
+/* <=======================================================================================================>  *
+ *   Search:                                                                                                  *
+ * <=======================================================================================================>  */
+    filter: ""; /* starting text for search entry */
+    tokenize: true;
+    matching: "fuzzy";
+    normalize-match: true;
+    matching-negate-char: '!';
+/* <=======================================================================================================>  *
+ *   History:                                                                                                 *
+ * <=======================================================================================================>  */
+    sort: true;
+    max-history-size: 5;
+    disable-history: false;
+    sorting-method: "fzf"; /* levenshtein, fzf sorting */
+/* <=======================================================================================================>  *
+ *   Plugins:                                                                                                 *
+ * <=======================================================================================================>  */
+    plugins: true;
+    plugin-path: "~/.config/rofi/plugins";
+/* <=======================================================================================================>  *
+ *   Behaviour:                                                                                               *
+ * <=======================================================================================================>  */
+    eh: 1; /* line height */
+    dpi: 1; /* (size,0,1): {0: auto-detect based on x11 screen size},  {1: auto-detect based on monitor size} */
+    threads: 8;
+    cycle: true; /* wrap around result */
+    replace: true; /* based on pid file */
+    monitor: "-1"; /* (num, name): {-1: Focused Monitor}, {-2: Focused Window}, {-3: Mouse}, {-4: Focused Window's Monitor}, {-5: Mouse's Monitor}*/
+    lazy-grab: true;
+    scroll-method: 0; /* 0: Per page - 1: Continous */
+    steal-focus: true;
+    auto-select: false; /* select last filtered entry */
+    hover-select: false; /* select entry on mouse hover */
+    click-to-exit: true;
+    normal-window: false; /* act as a normal client window */
+    case-sensitive: false;
+    pid: "~/.cache/rofi/pid";
+    cache-dir: "~/.cache/rofi";
+    refilter-timeout-limit: 8192;
+    xserver-i300-workaround: false; /* workaround for bug in Xserver. see issues #611 and #1642 on the rofi issue tracker. */
+    terminal: "rofi-sensible-terminal"; /* rofi-sensible-terminal tries in order: $TERMINAL, x-terminal-emulator, urxvt, rxvt, stterminology, qterminal, Eterm, aterm, uxterm, xterm, roxterm, xfce4-terminal.wrapper, mate-terminal, lxterminal, konsole, alacritty, kitty */
+/* <=======================================================================================================>  *
+ *   Keybindings & Mousebindings:                                                                             *
+ * <=======================================================================================================>  *
+ *   Manpage: rofi-keys(5)                                                                                    *
+ * <=======================================================================================================>  */
+    kb-primary-paste: "Control+V,Shift+Insert";
+    kb-secondary-paste: "Control+v,Insert";
+
+    kb-clear-line: "Control+w";
+
+    kb-move-front: "Home,KP_Home";
+    kb-move-end: "End,KP_End";
+
+    kb-move-char-back: "Left";
+    kb-move-char-forward: "Right";
+
+    kb-move-word-back: "Shift+Left";
+    kb-move-word-forward: "Shift+Right";
+
+    kb-remove-char-back: "BackSpace";
+    kb-remove-char-forward: "Delete";
+
+    kb-remove-word-back: "Control+BackSpace";
+    kb-remove-word-forward: "Control+Delete";
+
+    kb-remove-to-sol: "Alt+BackSpace";
+    kb-remove-to-eol: "Alt+Delete";
+
+    kb-accept-entry: "Return,KP_Enter";
+    kb-accept-custom: "Control+Return,Control+KP_Enter";
+
+    kb-accept-alt: "Shift+Return,Shift+KP_Enter";
+    kb-accept-custom-alt: "Control+Shift+Return,Control+Shift+KP_Enter";
+
+    kb-delete-entry: "Shift+Delete,KP_Delete";
+
+    kb-mode-next: "Control+Tab,Control+Right";
+    kb-mode-previous: "Control+ISO_Left_Tab,Control+Left";
+
+    kb-mode-complete: ""; /* unclear what it does */
+
+    kb-row-up: "Up";
+    kb-row-down: "Down";
+
+    kb-row-left: "Control+Page_Up";
+    kb-row-right: "Control+Page_Down";
+
+    kb-row-tab: ""; /* unclear what it does */
+
+    kb-element-next: "Tab";
+    kb-element-prev: "ISO_Left_Tab";
+
+    kb-page-prev: "Page_Up,KP_Next";
+    kb-page-next: "Page_Down,KP_Prior";
+
+    kb-row-last: "Control+End,Control+KP_End";
+    kb-row-first: "Control+Home,Control+KP_Home";
+
+    kb-row-select: "Control+space";
+
+    kb-screenshot: "Alt+S";
+    kb-ellipsize: "Alt+period";
+
+    kb-toggle-sort: "grave,dead_grave,masculine";
+    kb-toggle-case-sensitivity: "Alt+grave,Alt+dead_grave,Alt+masculine";
+
+    kb-cancel: "Escape";
+
+    kb-select-1: "Control+1";
+    kb-select-2: "Control+2";
+    kb-select-3: "Control+3";
+    kb-select-4: "Control+4";
+    kb-select-5: "Control+5";
+    kb-select-6: "Control+6";
+    kb-select-7: "Control+7";
+    kb-select-8: "Control+8";
+    kb-select-9: "Control+9";
+    kb-select-10: "Control+0";
+
+    ml-row-up: "ScrollUp";
+    ml-row-down: "ScrollDown";
+
+    ml-row-left: "ScrollLeft";
+    ml-row-right: "ScrollRight";
+
+    me-select-entry: "MousePrimary,MouseSecondary";
+    me-accept-entry: "MouseDPrimary";
+    me-accept-custom: "Control+MouseDPrimary";
+
+/*  Keys for custom scripts
+    kb-custom-1: "Alt+1";
+    kb-custom-2: "Alt+2";
+    kb-custom-3: "Alt+3";
+    kb-custom-4: "Alt+4";
+    kb-custom-5: "Alt+5";
+    kb-custom-6: "Alt+6";
+    kb-custom-7: "Alt+7";
+    kb-custom-8: "Alt+8";
+    kb-custom-9: "Alt+9";
+    kb-custom-10: "Alt+0";
+    kb-custom-11: "Alt+exclam";
+    kb-custom-12: "Alt+at";
+    kb-custom-13: "Alt+numbersign";
+    kb-custom-14: "Alt+dollar";
+    kb-custom-15: "Alt+percent";
+    kb-custom-16: "Alt+dead_circumflex";
+    kb-custom-17: "Alt+ampersand";
+    kb-custom-18: "Alt+asterisk";
+    kb-custom-19: "Alt+parenleft"; */
+
+    keys {
+        display-name: "";
+        fallback-icon: "application-x-addon";
+    }
+/* <=======================================================================================================>  *
+ *   Events Listeners:                                                                                        *
+ * <=======================================================================================================>  */
+    timeout {
+        delay: 60; /* seconds */
+        action: "kb-cancel";
+    }
+    inputchange {
+        action: "kb-row-first";
+    }
+/* <=======================================================================================================>  */
+}
+/* <=======================================================================================================>  *
+ *   Import Theme:                                                                                            *
+ * <=======================================================================================================>  *
+ *   Manpage: rofi-theme(5)                                                                                   *
+ * <=======================================================================================================>  */
+    @theme "themes/theme.rasi" /* disable default theme and imports new one */
+/* <=======================================================================================================>  */
