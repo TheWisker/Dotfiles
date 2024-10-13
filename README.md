@@ -1,7 +1,7 @@
 <h1 align="center">Dotfiles</h1>
 <div align="center">
     <a href="https://github.com/TheWisker/Dotfiles">
-        <img width="400" src="./assets/logo.png">
+        <img width="200" src="./assets/logo.png">
     </a>
 </div>
 <p align="center">Collection of Linux dotfiles</p>
