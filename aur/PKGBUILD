@@ -1,6 +1,6 @@
 # Maintainer: Wisker <TheWisker@protonmail.com>
 pkgname=dotfiles
-pkgver=v1.0.0
+pkgver=v1.1.0
 pkgrel=1
 pkgdesc="Collection of Linux dotfiles"
 arch=('any')
@@ -14,6 +14,7 @@ optdepends=(
     'btop: for using it with custom configuration'
     'fastfetch: for using it with custom configuration'
     'fish: for using it with custom configuration'
+    'flameshot: for using it with custom configuration'
     'kitty: for using it with custom configuration'
     'kvantum: for using it with custom configuration'
     'mangohud: for using it with custom configuration'

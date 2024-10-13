@@ -9,17 +9,17 @@
 <h2 align="center">Index</h2>
 
 <div align="center">
-    
+
   [Description][description]
-  
+
   [Features][features]
-  
+
   [Screenshots][screenshots]
-  
+
   [Installation][installation]
 
   [Updating][updating]
-  
+
   [Dependencies][dependencies]
 
   [Discussions][discussions]
@@ -29,9 +29,9 @@
   [Documentation][documentation]
 
   [License][license]
-  
+
   [Code of Conduct][coc]
-  
+
   [Author][author]
 
 </div>
@@ -62,7 +62,7 @@ The collection features:
 
 <h3>Manually</h3>
 
-The **Dotfiles** installation is really straightforward. 
+The **Dotfiles** installation is really straightforward.
 
 **Copy** any configuration **dotfiles** *you* want to use from the `./.config/` directory of the **reposutory** to the `./.config/` directory under **home** directory of the **user** or **users** you want to apply the configuration to.
 
@@ -73,7 +73,7 @@ The **Dotfiles** installation is really straightforward.
 
 <h2 align="center">Updating [<a href="https://github.com/TheWisker/Dotfiles#index">↑</a>]</h2>
 
-When updating **Dotfiles** just follow the steps for installation. 
+When updating **Dotfiles** just follow the steps for installation.
 
 > [!WARNING]
 > Any **custom changes** to the dotfiles will **dissapear**. If you wish those changes **persist** simply add them to the **new** dotfiles.
@@ -108,7 +108,7 @@ We look forward to your contributions!
 you can **always refer** to the *specific* software's **documentation** or main page as listed in the [acknowledgements][acknowledgements].
 
 If still in doubt, you are more than welcome to **ask** *any* **question** you have [here][discussion-questions], specially if it is refering to configuration
-that is **really specific** to *my* setup. 
+that is **really specific** to *my* setup.
 
 <h2 align="center">License [<a href="https://github.com/TheWisker/Dotfiles#index">↑</a>]</h2>
 
@@ -138,15 +138,6 @@ that is **really specific** to *my* setup.
 [license]: https://github.com/TheWisker/Dotfiles#license-
 [coc]: https://github.com/TheWisker/Dotfiles#code-of-conduct-
 [author]: https://github.com/TheWisker/Dotfiles#author-
-[aur]: https://aur.archlinux.org/
-[aur-wiki]: https://wiki.archlinux.org/title/Arch_User_Repository
-[github]: https://github.com
-[bash]: https://www.gnu.org/software/bash/
-[jq]: https://jqlang.github.io/jq/
-[JSON]: https://www.json.org/json-en.html
-[curl]: https://curl.se/
-[awk]: https://en.wikipedia.org/wiki/AWK
-[pacman]: https://wiki.archlinux.org/title/Pacman
 [discussion-questions]: https://github.com/TheWisker/Dotfiles/discussions/categories/q-a
 [contributing]: ./CONTRIBUTING.md
 [contributors]: ./CONTRIBUTORS.md

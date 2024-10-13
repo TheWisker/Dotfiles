@@ -16,6 +16,7 @@
 - [Btop][btop-hook]
 - [Fastfetch][fastfetch-hook]
 - [Fish][fish-hook]
+- [Flameshot][flameshot-hook]
 - [Kitty][kitty-hook]
 - [Kvantum][kvantum-hook]
 - [MangoHud][mangohud-hook]
@@ -46,6 +47,10 @@
 ## Fish [[↑][index]]
 
 **Dotfiles** configures [fish][fish] so we give our acknowledgments.
+
+## Flameshot [[↑][index]]
+
+**Dotfiles** configures [flameshot][flameshot] so we give our acknowledgments.
 
 ## Kitty [[↑][index]]
 
@@ -116,6 +121,7 @@
 [btop-hook]: https://github.com/TheWisker/Dotfiles/blob/master/ACKNOWLEDGMENTS.md#btop-
 [fastfetch-hook]: https://github.com/TheWisker/Dotfiles/blob/master/ACKNOWLEDGMENTS.md#fastfetch-
 [fish-hook]: https://github.com/TheWisker/Dotfiles/blob/master/ACKNOWLEDGMENTS.md#fish-
+[flameshot-hook]: https://github.com/TheWisker/Dotfiles/blob/master/ACKNOWLEDGMENTS.md#flameshot-
 [kitty-hook]: https://github.com/TheWisker/Dotfiles/blob/master/ACKNOWLEDGMENTS.md#kitty-
 [kvantum-hook]: https://github.com/TheWisker/Dotfiles/blob/master/ACKNOWLEDGMENTS.md#kvantum-
 [mangohud-hook]: https://github.com/TheWisker/Dotfiles/blob/master/ACKNOWLEDGMENTS.md#mangohud-
@@ -135,6 +141,7 @@
 [btop]: https://github.com/aristocratos/btop
 [fastfetch]: https://github.com/fastfetch-cli/fastfetch
 [fish]: https://fishshell.com/
+[flameshot]: https://flameshot.org/
 [kitty]: https://sw.kovidgoyal.net/kitty/
 [kvantum]: https://github.com/tsujan/Kvantum/tree/master/Kvantum
 [mangohud]: https://github.com/flightlessmango/MangoHud
